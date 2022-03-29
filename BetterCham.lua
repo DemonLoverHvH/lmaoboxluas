@@ -27,7 +27,8 @@ local tm = [["VertexLitGeneric"
 
 
 --Play with color2 to get your favorite colors to look good
-local BasedMaterial = materials.Create( "BasedMaterial", kv )
+local BasedMaterial = materials.Create( "BasedMaterial", em )
+local TeamMaterial = materials.Create( "TeamMaterial", tm )
 BasedMaterial:SetMaterialVarFlag( MATERIAL_VAR_IGNOREZ, false )
 
 local function onDrawModel( drawModelContext )
@@ -36,7 +37,7 @@ local function onDrawModel( drawModelContext )
         return
     end   
     local resolve_team = entity:GetTeamNumber() or entity:GetPropEntity( "m_hOwner" ):GetTeamNumber()
-        drawModelContext:ForcedMaterialOverride( BasedMaterial ) --thanks for these two lines jesse
+        drawModelContext:ForcedMaterialOverride( TeamMaterial ) --thanks for these two lines jesse
 end
 
 callbacks.Register( "DrawModel", "hook123", onDrawModel )
