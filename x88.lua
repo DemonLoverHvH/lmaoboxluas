@@ -1,3 +1,4 @@
+-- Zade & Trophy
 local tahoma = draw.CreateFont("Tahoma Bold", 15, 590 , 0x200)
 local current_fps = 0
 
@@ -17,16 +18,17 @@ local function secondary()
   local aimbotMethod = gui.GetValue( "aim method" )
   local dt = gui.GetValue( "double tap" )
   local aa = gui.GetValue( "anti aim" )
-  local time = clientstate.GetConnectTime()
+  local ping = m_iPing()
 
   draw.SetFont(tahoma)
   draw.Color(255, 255, 255, 255)
 
   if globals.FrameCount() % 50 == 0 then
-    current_fps = math.floor(1 / globals.FrameTime()) 
+    current_fps = math.floor(1 / globals.FrameTime())
+    clientstate.GetLatencyIn = math.floor(1 / globals.FrameTime())
   end
   draw.Text(270, 55, "FrameRate  " .. current_fps .."" )
-  draw.Text( 270, 70, "Latency " .. time .. "")
+  draw.Text( 270, 70, "Latency " .. ping .. "")
   -- checks if the aimbot is enabled then renders text
   if(aimbot == 1) then
     draw.Text( 400, 55, "AimBot: ON")
