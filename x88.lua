@@ -37,7 +37,7 @@ local function secondary()
   draw.Text(270, 55, "FrameRate  " .. current_fps .."" )
   
   if (triggerbot == 1) then
-    draw.Text(270, 70, "Triggerbot: ON")
+    draw.Text(270, 70, "Triggerbot: "(draw.Color, 0, 0, 225, 225)"ON")
     else
     draw.Text(270, 70, "Triggerbot: OFF")       
     end
