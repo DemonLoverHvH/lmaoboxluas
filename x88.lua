@@ -1,4 +1,7 @@
--- Zade & Trophy
+-- Made by: Zade & Trophy 
+ 
+-- Original menu credit goes to: Masterlooser15
+
 local tahoma = draw.CreateFont("Tahoma Bold", 15, 590 , 0x200)
 local current_fps = 0
 
@@ -31,8 +34,7 @@ local function secondary()
   local customfov = gui.GetValue("enable custom fov")
   local fovvalue = gui.GetValue("custom fov value") 
   local thirdperson = gui.GetValue("thirdperson")
-
-  local ping = clientstate.GetLatencyOut()
+  local classrevealer = gui.GetValue("scoreboard: show enemy classes")
 
   draw.SetFont(tahoma)
   draw.Color(255, 255, 255, 255)
@@ -75,6 +77,18 @@ local function secondary()
       draw.Text( 270, 130, "AA: WARNING: ON")
     else
       draw.Text( 270, 130, "AA: OFF")
+    end
+
+    if(chams == 1) then
+      draw.Text( 270, 145, "Chams: ON")
+    else
+      draw.Text( 270, 145, "Chams: OFF")
+    end
+
+    if(classrevealer == 1) then
+      draw.Text( 270, 160, "ClassReveal: ON")
+    else
+      draw.Text( 270, 160, "ClassReveal: OFF")
     end
 
   if (antiobs == 0) then
