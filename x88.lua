@@ -22,8 +22,9 @@ local function secondary()
   local chams = gui.GetValue( "colored players" )
   local esp = gui.GetValue("players")
   local fakepingvalue = gui.GetValue( "fake latency value" )
-  local fakeping = gui.GetValue( "fake latency value" )
-  local triggerbot = gui.GetValue( "trigger shoot" ) 
+  local fakeping = gui.GetValue( "fake latency" )
+  local triggerbot = gui.GetValue( "trigger shoot" )
+  local backtrack = gui.GetValue( "backtrack" )
 
   local ping = clientstate.GetLatencyOut()
 
@@ -34,22 +35,27 @@ local function secondary()
  --   clientstate.GetLatencyOut = math.floor( 1 / globals.FrameTime())
   end
   draw.Text(270, 55, "FrameRate  " .. current_fps .."" )
-
+  
   if (triggerbot == 1) then
-    draw.Text(270, 70 "Triggerbot: ON")
+    draw.Text(270, 70, "Triggerbot: ON")
     else
-    draw.Text(270, 70 "Triggerbot: OFF")       
-
+    draw.Text(270, 70, "Triggerbot: OFF")       
+    end
   if (esp == 1) then
     draw.Text( 270, 85, "ESP: ON")
     else
     draw.Text(270, 85, "ESP: OFF")
   end
-
+  
       if (aimbot == 1) then
       draw.Text(270, 100, "Aim Fov: ".. aimbotfov.."" )
      end
 
+     if (backtrack == 1) then
+      draw.Text(270, 115, "Backtrack: ON")
+     else
+      draw.Text(270, 115, "Backtrack: OFF")
+     end
   -- checks if the aimbot is enabled then renders text  
   if(aimbot == 1) then
     draw.Text( 400, 55, "AimBot: ON")
@@ -64,8 +70,15 @@ local function secondary()
       draw.Text( 400, 85, "Anti Aim: OFF")
     end
 
+    if(fakeping == 1) then
+      draw.Text( 400, 100, "Fake Ping: ON")
+    else
+      draw.Text( 400, 100, "Fake Ping: OFF")
+    end
 
-
+    if(fakeping == 1) then
+    draw.Text( 400, 115, "Fake Ping ammount: ".. fakepingvalue.."")
+    end
 end
 
 
