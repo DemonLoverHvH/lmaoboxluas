@@ -8,6 +8,8 @@ local function primary()
     draw.Color( 255, 255, 0, 255 )
     draw.Text( 270, 5, "Hello TwoZade :)")
     draw.Text( 270, 25, "Hello Trophy :)" )
+    draw.Text(370, 25, "  FrameRate  " .. current_fps .."" )
+=======
     draw.Text(370, 25, "FrameRate  " .. current_fps .."" )
 end
 
@@ -24,6 +26,15 @@ local function secondary()
   local fakepingvalue = gui.GetValue( "fake latency value" )
   local fakeping = gui.GetValue( "fake latency value" )
   local triggerbot = gui.GetValue( "trigger shoot" )
+  local backtrack = gui.GetValue( "backtrack" )
+  local bhop = gui.GetValue("bunny hop")
+  local antiobs = gui.GetValue("anti-obs")
+  local nohands = gui.GetValue("no hands")
+  local noscope = gui.GetValue("no scope")
+  local customfov = gui.GetValue("enable custom fov")
+  local fovvalue = gui.GetValue("custom fov value") 
+  local thirdperson = gui.GetValue("thirdperson")
+=======
   local bhop = gui.GetValue("bunny hop")
   local antiobs = gui.GetValue("anti-obs")
   local nohands = gui.GetValue("no hands")
@@ -40,14 +51,20 @@ local function secondary()
  --   clientstate.GetLatencyOut = math.floor( 1 / globals.FrameTime())
   end
 
+=======
+
   if (triggerbot == 0) then
       draw.Text(270, 100, "Triggerbot: OFF")
 =======
   draw.Text(270, 55, "FrameRate  " .. current_fps .."" )
   
   if (triggerbot == 1) then
-    draw.Text(270, 70, "Triggerbot: "(draw.Color, 0, 0, 225, 225)"ON")
+      draw.Text(270, 100, "Triggerbot: ON")
     else
+      draw.Text(270, 100, "Triggerbot: OFF")
+    end       
+-- checks if ESP is enabled then renders text
+=======
       draw.Text(270, 100, "Triggerbot: ON")
     end       
 -- checks if ESP is enabled then renders text
@@ -76,8 +93,12 @@ local function secondary()
 
     -- checks if anti-aim is enabled then renders text
     if(aa == 1) then
+      draw.Text( 270, 130, "AA: WARNING: ON")
+=======
       draw.Text( 400, 70, "AA: WARNING: ON")
     else
+      draw.Text( 270, 130, "AA: OFF")
+=======
       draw.Text( 400, 70, "AA: OFF")
     end
 
@@ -98,6 +119,45 @@ local function secondary()
   else
     draw.Text(400, 130, "NoHands: ON")
   end   
+
+  if (customfov == 1) then
+    draw.Text(400, 145, "FOVChanger: ON")
+  else
+    draw.Text(400, 145, "FOVChanger: OFF")
+  end  
+
+  if(customfov == 1) then
+    draw.Text( 400, 160, "ViewFOV: " .. fovvalue .."")
+  end
+
+  if(fakeping == 1) then
+    draw.Text( 400, 175, "Fake Ping: ON")
+  else
+    draw.Text( 400, 175, "Fake Ping: OFF")
+  end
+
+
+  if(fakeping == 1) then
+  draw.Text( 400, 190, "Fake Ping ammount: ".. fakepingvalue.."")
+  end
+ 
+  if (autofire == 1) then
+    draw.Text(270, 115, "AutoFire: ON")
+  else
+    draw.Text(270, 115, "AutoFire: OFF")
+  end   
+
+  if (thirdperson == 1) then 
+    draw.Text(400, 70, "Thirdp: ON")
+  else
+    draw.Text(400, 70, "Thirdp: OFF")
+  end   
+=======
+  if (nohands == 0) then
+    draw.Text(400, 130, "NoHands: OFF")
+  else
+    draw.Text(400, 130, "NoHands: ON")
+  end   
  
   if (autofire == 0) then
     draw.Text(270, 115, "AutoFire: OFF")
@@ -111,3 +171,5 @@ end
 
 callbacks.Register("Draw", primary)
 callbacks.Register("Draw", "draw", secondary)
+=======
+
