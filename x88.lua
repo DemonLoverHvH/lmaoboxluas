@@ -1,10 +1,17 @@
--- Made by: Zade & Trophy 
- 
--- Original menu credit goes to: Masterlooser15
-
+-- Zade & Trophy
 local tahoma = draw.CreateFont("Tahoma Bold", 15, 590 , 0x200)
 local current_fps = 0
 
+
+function RGBRainbow(frequency)
+  local curtime = globals.CurTime() 
+  local r,g,b
+  r = math.floor(math.sin(curtime * frequency + 0) * 127 + 128)
+  g = math.floor(math.sin(curtime * frequency + 2) * 127 + 128)
+  b = math.floor(math.sin(curtime * frequency + 4) * 127 + 128)
+
+  return r, g, b
+end
 
 local function primary()
     draw.SetFont(tahoma)
@@ -34,7 +41,9 @@ local function secondary()
   local customfov = gui.GetValue("enable custom fov")
   local fovvalue = gui.GetValue("custom fov value") 
   local thirdperson = gui.GetValue("thirdperson")
-  local classrevealer = gui.GetValue("scoreboard: show enemy classes")
+  local r, g, b = RGBRainbow(1)
+
+  local ping = clientstate.GetLatencyOut()
 
   draw.SetFont(tahoma)
   draw.Color(255, 255, 255, 255)
@@ -74,24 +83,14 @@ local function secondary()
 
     -- checks if anti-aim is enabled then renders text
     if(aa == 1) then
+      draw.Color(r, g, b, 255)
       draw.Text( 270, 130, "AA: WARNING: ON")
     else
       draw.Text( 270, 130, "AA: OFF")
     end
 
-    if(chams == 1) then
-      draw.Text( 270, 145, "Chams: ON")
-    else
-      draw.Text( 270, 145, "Chams: OFF")
-    end
-
-    if(classrevealer == 1) then
-      draw.Text( 270, 160, "ClassReveal: ON")
-    else
-      draw.Text( 270, 160, "ClassReveal: OFF")
-    end
-
   if (antiobs == 0) then
+    draw.Color(255, 225, 225, 255)
     draw.Text(400, 100, "Anti-OBS: OFF")
   else
     draw.Text(400, 100, "Anti-OBS: ON")
@@ -142,6 +141,7 @@ local function secondary()
     draw.Text(400, 70, "Thirdp: OFF")
   end   
 end
+
 
 
 callbacks.Register("Draw", primary)
