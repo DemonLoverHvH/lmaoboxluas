@@ -18,7 +18,7 @@ local Viewmodelz = menu:AddComponent(MenuLib.Slider("Viewmodel Z", -100, 100, 0)
 
 
 
-local function override(pCmd)
+local function CreateMove(pCmd)
     if Enable:GetValue() == true then
 
         local x = Viewmodelx:GetValue()
@@ -36,8 +36,8 @@ local function Unload()
     client.Command('play "ui/buttonclickrelease"', true)
 end
 
-callbacks.Unregister("override", "MT_override") 
-callbacks.Register("override", "MT_override", override)
+callbacks.Unregister("CreateMove", "MT_CreateMove") 
+callbacks.Register("CreateMove", "MT_CreateMove", CreateMove)
 
 callbacks.Unregister("Unload", "MT_Unload") 
 callbacks.Register("Unload", "MT_Unload", Unload)
