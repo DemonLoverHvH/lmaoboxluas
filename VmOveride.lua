@@ -1,6 +1,7 @@
 --[[
-    Misc Tools for Lmaobox
-    Author: LNX (github.com/lnx00)
+    Viewmodel Override For Lmaobox
+    Lib Author: LNX (github.com/lnx00)
+    Author: Trophy github.com/DemonLoverHvH
 ]]
 
 local menuLoaded, MenuLib = pcall(require, "Menu")
