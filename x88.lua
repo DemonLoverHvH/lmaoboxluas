@@ -31,7 +31,7 @@ local function secondary()
   local aa = gui.GetValue( "anti aim" )
   local chams = gui.GetValue( "colored players" )
   local esp = gui.GetValue("players")
-  local fakepingvalue = gui.GetValue( "fake latency value" )
+  local fakepingvalue = gui.GetValue( "fake latency value (ms)" )
   local fakeping = gui.GetValue( "fake latency" )
   local triggerbot = gui.GetValue( "trigger shoot" )
   local bhop = gui.GetValue("bunny hop")
@@ -41,6 +41,7 @@ local function secondary()
   local customfov = gui.GetValue("enable custom fov")
   local fovvalue = gui.GetValue("custom fov value") 
   local thirdperson = gui.GetValue("thirdperson")
+  local triggerdel = gui.GetValue("trigger shoot delay (ms)")
   local r, g, b = RGBRainbow(1)
 
   local ping = clientstate.GetLatencyOut()
@@ -52,33 +53,18 @@ local function secondary()
  --   clientstate.GetLatencyOut = math.floor( 1 / globals.FrameTime())
   end
 
-  if (triggerbot == 1) then
-      draw.Text(270, 100, "Triggerbot: ON")
-    else
-      draw.Text(270, 100, "Triggerbot: OFF")
-    end       
+  draw.Text (270, 100, "Triggerbot: " .. (triggerbot == 1 and "ON" or "OFF"))
+     
 -- checks if ESP is enabled then renders text
-  if (esp == 1) then
-    draw.Text( 270, 85, "ESP: ON")
-    else
-    draw.Text(270, 85, "ESP: OFF")
-  end
+    draw.Text( 270, 85, "ESP: " .. (esp == 1 and "ON" or "OFF"))
 -- checks if the aimbot is enabled then renders the aim fov
       if (aimbot == 1) then
       draw.Text(270, 70, "AimFov: ".. aimbotfov.."" )
       end
   -- checks if BunnyHop is enabled then renders text
-  if (bhop == 0) then
-    draw.Text(400, 85, "Bunnyhop: OFF")
-    else
-      draw.Text(400, 85, "Bunnyhop: ON")
-    end     
+  draw.Text(400, 85, "Bunnyhop: " .. (bhop == 1 and "ON" or "OFF"))
   -- checks if the aimbot is enabled then renders text  
-  if(aimbot == 1) then
-    draw.Text( 270, 55, "AimBot: ON")
-  else
-    draw.Text( 270, 55, "AimBot: OFF")
-  end
+  draw.Text( 270, 55, "AimBot: ".. (aimbot == 1 and "ON" or "OFF"))
   draw.Text( 400, 55, "AimMethod: " ..aimbotMethod.."")
 
     -- checks if anti-aim is enabled then renders text
@@ -89,57 +75,29 @@ local function secondary()
       draw.Text( 270, 130, "AA: OFF")
     end
 
-  if (antiobs == 0) then
-    draw.Color(255, 225, 225, 255)
-    draw.Text(400, 100, "Anti-OBS: OFF")
-  else
-    draw.Text(400, 100, "Anti-OBS: ON")
-  end
+  draw.Color(255, 255, 255, 255)
+  draw.Text(400, 100, "Anti-OBS: ".. (antiobs == 1 and "ON" or "OFF"))
   
-  if (noscope == 0) then
-    draw.Text(400, 115, "NoScope: OFF")
-  else
-    draw.Text(400, 115, "NoScope: ON")
-  end   
+  draw.Text(400, 115, "NoScope: ".. (noscope == 1 and "ON" or "OFF")) 
 
-  if (nohands == 0) then
-    draw.Text(400, 130, "NoHands: OFF")
-  else
-    draw.Text(400, 130, "NoHands: ON")
-  end   
+  draw.Text(400, 130, "NoHands: ".. (nohands == 1 and "ON" or "OFF"))
 
-  if (customfov == 1) then
-    draw.Text(400, 145, "FOVChanger: ON")
-  else
-    draw.Text(400, 145, "FOVChanger: OFF")
-  end  
+  draw.Text(400, 145, "FOVChanger: ".. (customfov == 1 and "ON" or "OFF"))
 
   if(customfov == 1) then
     draw.Text( 400, 160, "ViewFOV: " .. fovvalue .."")
   end
 
-  if(fakeping == 1) then
-    draw.Text( 400, 175, "Fake Ping: ON")
-  else
-    draw.Text( 400, 175, "Fake Ping: OFF")
-  end
-
+  draw.Text( 400, 175, "Fake Ping: ".. (fakeping == 1 and "ON" or "OFF"))
 
   if(fakeping == 1) then
-  draw.Text( 400, 190, "Fake Ping ammount: ".. fakepingvalue.."")
-  end
- 
-  if (autofire == 1) then
-    draw.Text(270, 115, "AutoFire: ON")
-  else
-    draw.Text(270, 115, "AutoFire: OFF")
-  end   
+    draw.Text( 400, 190, "Fake Ping ammount: ".. fakepingvalue .."")
+  end  
 
-  if (thirdperson == 1) then 
-    draw.Text(400, 70, "Thirdp: ON")
-  else
-    draw.Text(400, 70, "Thirdp: OFF")
-  end   
+  draw.Text(270, 115, "Trigger Del: "..triggerdel)
+
+
+  draw.Text(400, 70, "Thirdp: ".. (thirdperson == 1 and "ON" or "OFF"))
 end
 
 
