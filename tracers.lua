@@ -20,8 +20,6 @@ local function update()
     local localPlayer = entities.GetLocalPlayer()
     local myteam = localPlayer:GetTeamNumber()
     
-
-
     if (myteam == 0) then
         return
     else
@@ -38,7 +36,7 @@ local function update()
 
             if screenPos ~= nil then
 
-                draw.Line(width/2,height, screenPos[1], screenPos[2])
+                draw.Line(width/2,height, screenPos[1], screenPos[2]) -- do height/2, if you want in middle only using height is bottom
             end
             
         end
